@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>lodash库减少watch对后台请求的压力</title>
+    <script src="vue.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../node_modules/lodash/lodash.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <input v-model="word" type="text" />
+      {{ result }}
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        watch: {
+          word: _.debounce(function(v) {
+            console.log(v);
+            axios.get("7.php?word=" + v).then(response => {
+              this.result = response.data;
+            });
+          }, 500)
+        },
+        data: {
+          word: "",
+          result: ""
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>
