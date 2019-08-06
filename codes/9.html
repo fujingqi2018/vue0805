@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <style>
+      .green {
+        color: green;
+      }
+      .color {
+        color: red;
+      }
+      .font {
+        font-size: 100px;
+      }
+    </style>
+    <div id="app">
+      <div :class="{color:true,font:true}">付精琪</div>
+      <br />
+      <h1 class="green" :class="fjq">西安智慧生活</h1>
+      <br />
+      <h1 :class="[classNameA, classNameB]">www.xasmartliving.com</h1>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          fjq: {
+            color: true,
+            font: true
+          },
+          classNameA: "color",
+          classNameB: "font"
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>
