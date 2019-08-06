@@ -4,16 +4,29 @@
     <meta charset="UTF-8" />
     <title>watch监听属性变化</title>
     <script src="vue.js"></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <input v-model="word" type="text" />
+      {{ result }}
+    </div>
 
     <script>
       var vm = new Vue({
         el: "#app",
-        watch: {},
-        data: {},
+        watch: {
+          word: function(v) {
+            axios.get("7.php?word=" + v).then(response => {
+              this.result = response.data;
+            });
+          }
+        },
+        data: {
+          word: "",
+          result: ""
+        },
         methods: {}
       });
     </script>
