@@ -7,12 +7,37 @@
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <li v-for="v in stus">{{ v.name }} -- {{ v.sex }}</li>
+      {{ type }}
+      <br />
+      <input v-model="type" type="radio" value="girl" />女孩
+      <input v-model="type" type="radio" value="boy" />男孩
+    </div>
 
     <script>
       var vm = new Vue({
         el: "#app",
-        data: {},
+        computed: {
+          stus() {
+            if (this.type == "all") {
+              return this.user;
+            } else {
+              return this.user.filter(v => {
+                return v.sex == this.type;
+              });
+            }
+          }
+        },
+        data: {
+          type: "all",
+          user: [
+            { name: "张三", sex: "boy" },
+            { name: "李四", sex: "boy" },
+            { name: "王五", sex: "girl" },
+            { name: "赵六", sex: "girl" }
+          ]
+        },
         methods: {}
       });
     </script>

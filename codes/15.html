@@ -7,12 +7,35 @@
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <table border="13">
+        <tr>
+          <th>序号</th>
+          <th>id</th>
+          <th>标题</th>
+          <th>维护</th>
+        </tr>
+        <tbody>
+          <tr v-for="(field,key) in articles">
+            <td>{{ key + 1 }}</td>
+            <td>{{ field.id }}</td>
+            <td>{{ field.title }}</td>
+            <td>{{ name }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <script>
       var vm = new Vue({
         el: "#app",
-        data: {},
+        data: {
+          articles: [
+            { id: 212, title: "你好，智慧生活" },
+            { id: 77, title: "这里的上路十八弯" }
+          ],
+          name: "付精琪"
+        },
         methods: {}
       });
     </script>

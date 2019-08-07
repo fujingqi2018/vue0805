@@ -7,12 +7,29 @@
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <li v-for="(item,key, index) in user" :key="index">
+        {{ index }}---{{ key }}---{{ item }}
+      </li>
+
+      <hr />
+      <table border="1" width="50%">
+        <tr v-for="v in 10">
+          <td>{{ v }}</td>
+        </tr>
+      </table>
+    </div>
 
     <script>
       var vm = new Vue({
         el: "#app",
-        data: {},
+        data: {
+          user: {
+            name: "付精琪",
+            age: 20,
+            sex: "boy"
+          }
+        },
         methods: {}
       });
     </script>
