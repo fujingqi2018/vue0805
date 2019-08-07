@@ -7,12 +7,27 @@
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h1>v-if的使用</h1>
+      <input type="text" v-model="age" />
+      <span v-if="age<20">小孩</span>
+      <span v-else-if="age<30">青年</span>
+      <span v-else-if="age<50">壮年</span>
+      <span v-else>中老年</span>
+
+      <hr />
+      <input v-model="copyright" type="checkbox" />接受协议<br />
+      <span v-if="copyright==false">请先接受协议</span>
+      <button v-else>注册</button>
+    </div>
 
     <script>
       var vm = new Vue({
         el: "#app",
-        data: {},
+        data: {
+          copyright: false,
+          age: 0
+        },
         methods: {}
       });
     </script>

@@ -7,12 +7,28 @@
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <template v-if="regType=='mail'">
+        <div>
+          邮箱: <input type="text" name="username" key="mail-register" />
+        </div>
+      </template>
+      <template v-if="regType=='phone'">
+        <div>
+          手机: <input type="text" name="username" key="phone-register" />
+        </div>
+      </template>
+      <br />
+      <input v-model="regType" type="radio" value="mail" />邮箱注册
+      <input v-model="regType" type="radio" value="phone" />手机注册
+    </div>
 
     <script>
       var vm = new Vue({
         el: "#app",
-        data: {},
+        data: {
+          regType: "mail"
+        },
         methods: {}
       });
     </script>

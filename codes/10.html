@@ -7,13 +7,37 @@
   </head>
 
   <body>
-    <div id="app"></div>
+    <style>
+      .success {
+        color: green;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+    <div id="app">
+      <li v-for="v in news">
+        <!-- 掌握下列知识点：:class="表达式" 来控制类样式 -->
+        <span :class="v.status?'success':'error'">{{ v.title }}</span>
+        <button @click="changeStatus(v, false)" v-if="v.status">删除</button>
+        <button @click="changeStatus(v, true)" v-if="!v.status">恢复</button>
+      </li>
+    </div>
 
     <script>
       var vm = new Vue({
         el: "#app",
-        data: {},
-        methods: {}
+        data: {
+          news: [
+            { title: "付精琪", status: true },
+            { title: "西安智慧生活", status: true }
+          ]
+        },
+        methods: {
+          changeStatus(item, status) {
+            item.status = status;
+          }
+        }
       });
     </script>
   </body>
