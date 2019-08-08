@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="text" @keyup.13="keyupEvent" />键盘码13代表回车<br />
+      <input
+        type="text"
+        @keyup.enter="keyupEvent"
+      />事件修饰符enter代表回车<br />
+      <input type="text" @keyup.up="keyupEvent" />事件修饰符up<br />
+      <input
+        type="text"
+        @keyup.ctrl.a="keyupEvent"
+      />事件修饰符ctrl.a意思ctrl+a<br />
+      <input type="text" @keyup.alt="keyupEvent" />事件修饰符alt ctrl shift
+      单独使用不行需要加其他按键<br />
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+          keyupEvent() {
+            console.log("hello");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

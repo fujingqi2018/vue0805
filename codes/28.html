@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div
+        :style="style"
+        @contextmenu.prevent="handler"
+        @click.middle.prevenv="middleHandler"
+        @dblclick="dblHandler"
+      ></div>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          style: {
+            border: "solid 2px red",
+            height: "200px"
+          }
+        },
+        methods: {
+          handler() {
+            alert("右键");
+          },
+          middleHandler() {
+            alert("中");
+          },
+          dblHandler() {
+            alert("双击");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

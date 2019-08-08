@@ -12,6 +12,7 @@
   // 	],
   // 	"description": "Log output to console"
   // }
+
   "Html5-Vue": {
     "prefix": "vuehtml",
     "body": [
@@ -35,5 +36,15 @@
       "</html>"
     ],
     "description": "快速创建在html编写的vue模板"
+  },
+  "bootstrap-cdn": {
+    "prefix": "bootstrap-cdn",
+    "body": [
+      "\t<link href=\"https://cdn.bootcss.com/twitter-bootstrap/3.3.7/css/bootstrap.min.css\" rel=\"stylesheet\">",
+      "\t<link href=\"https://cdn.bootcss.com/font-awesome/5.10.0-12/css/fontawesome.min.css\" rel=\"stylesheet\">",
+      "\t<script src=\"https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js\"></script>",
+      "\t<script src=\"https://cdn.bootcss.com/twitter-bootstrap/3.3.7/js/bootstrap.js\"></script>"
+    ],
+    "description": "快速创建在html引入bootstrap"
   }
 }
