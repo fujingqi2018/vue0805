@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <link
+      href="https://cdn.bootcss.com/animate.css/3.7.2/animate.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="app">
+      <button @click="type=!type">切换</button>
+      <transition
+        enter-active-class="animated slideInDown"
+        leave-active-class="animated zoomOut"
+      >
+        <h1 v-if="type">西安智慧生活</h1>
+      </transition>
+    </div>
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          type: false
+        },
+        methods: {}
+      });
+    </script>
+  </body>
+</html>

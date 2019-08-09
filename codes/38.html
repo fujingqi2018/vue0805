@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <fjq-a a="你好智慧生活" b="www.xasmartliving.com" :c="news"></fjq-a>
+    </div>
+
+    <script type="text/x-template" id="fjqA">
+      <div>
+        {{a}} {{b}}
+        <li v-for="(v,k) in c">
+          {{v.title}}
+          <button @click="del(k)">删除</button>
+        </li>
+      </div>
+    </script>
+
+    <script>
+      var fjqA = {
+        template: "#fjqA",
+        props: ["a", "b", "c"],
+        data() {
+          return {};
+        },
+        methods: {
+          del(k) {
+            this.c.splice(k, 1);
+          }
+        }
+      };
+
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          news: [{ title: "西安智慧生活" }, { title: "付精琪" }]
+        },
+        methods: {},
+        //子组件
+        components: {
+          fjqA
+        }
+      });
+    </script>
+  </body>
+</html>
