@@ -28,13 +28,13 @@
               <td>{{v.title}}</td>
               <td>{{v.price}}</td>
               <td>{{v.num}}</td>
-              <td></td>
+              <td>{{v.total}}</td>
 
           </tr>
 
         </table>
-        <h2>总价：{{price}}</h2>
-        <h2>真总价：{{priceT}}</h2>
+        <h2>写总价：{{price}}</h2>
+        <h2>总价：{{priceT}}</h2>
 
       </div>
     </script>
@@ -44,14 +44,16 @@
         template: "#list",
         //3拿数据
         computed: {
+          //拿state里的数据
           price() {
             return this.$store.state.price;
           },
+          //拿getters里的数据
           priceT() {
             return this.$store.getters.price;
           },
           goods() {
-            return this.$store.state.goods;
+            return this.$store.getters.goods;
           }
         }
       };
@@ -72,6 +74,14 @@
               a += v.num * v.price;
             });
             return a;
+          },
+          //获取商品并计算每件商品的总价
+          goods(a) {
+            let goods = a.goods;
+            goods.forEach(v => {
+              v.total = v.num * v.price;
+            });
+            return goods;
           }
         }
       });
