@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <script src="vuex.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <wode></wode>
+    </div>
+
+    <script type="text/x-template" id="list">
+      <div>
+        <h1>总价：{{price}}</h1>
+        <table border="1" width="60%">
+          <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>价格</th>
+          </tr>
+          <tr v-for="v in goods">
+              <td>{{v.id}}</td>
+              <td>{{v.title}}</td>
+              <td>{{v.price}}</td>
+          </tr>
+
+        </table>
+
+
+      </div>
+    </script>
+
+    <script>
+      let wode = {
+        template: "#list",
+        //3拿数据
+        computed: {
+          price() {
+            return this.$store.state.price;
+          },
+          goods() {
+            return this.$store.state.goods;
+          }
+        }
+      };
+      //1创建仓库
+      let store = new Vuex.Store({
+        state: {
+          price: 100,
+          goods: [
+            { id: 1, title: "黑美人", price: 3 },
+            { id: 2, title: "麒麟", price: 2 }
+          ]
+        }
+      });
+      var vm = new Vue({
+        el: "#app",
+        data: {},
+        //声明组件
+        components: {
+          wode
+        },
+        //2声明仓库
+        store,
+        methods: {}
+      });
+    </script>
+  </body>
+</html>
