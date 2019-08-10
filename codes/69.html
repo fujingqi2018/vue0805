@@ -10,6 +10,7 @@
   <body>
     <div id="app">
       <wode></wode>
+      <cart></cart>
     </div>
 
     <script type="text/x-template" id="list">
@@ -27,17 +28,30 @@
               <td>{{v.id}}</td>
               <td>{{v.title}}</td>
               <td>{{v.price}}</td>
-              <td>{{v.num}}</td>
+              <td>
+                <input v-model="v.num" type="text" />
+              </td>
               <td>{{v.total}}</td>
 
           </tr>
 
         </table>
-        <h2>写总价：{{price}}</h2>
-        <h2>总价：{{priceT}}</h2>
-
+        <!-- <h2>写总价：{{price}}</h2>
+        <h2>总价：{{priceT}}</h2> -->
       </div>
     </script>
+
+    <script type="text/x-template" id="cart">
+      <div   class="cart">
+              <h2>总价：{{ priceT }}</h2>
+            </div>
+    </script>
+    <style>
+      .cart {
+        color: red;
+        background-color: aqua;
+      }
+    </style>
 
     <script>
       let wode = {
@@ -54,6 +68,16 @@
           },
           goods() {
             return this.$store.getters.goods;
+          }
+        }
+      };
+      let Cart = {
+        template: "#cart",
+        //3拿数据
+        computed: {
+          //拿getters里的数据
+          priceT() {
+            return this.$store.getters.price;
           }
         }
       };
@@ -90,7 +114,8 @@
         data: {},
         //声明组件
         components: {
-          wode
+          wode,
+          Cart
         },
         //2声明仓库
         store,
